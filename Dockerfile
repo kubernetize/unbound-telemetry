@@ -5,7 +5,7 @@ ARG VERSION=master
 RUN \
     mkdir unbound-telemetry && cd unbound-telemetry && \
     curl -sL https://github.com/svartalf/unbound-telemetry/archive/$VERSION.tar.gz | tar xzf - --strip-components=1 && \
-    cargo build --release && \
+    cargo build -j 1 --release && \
     strip -s target/release/unbound-telemetry
 
 FROM debian:buster-slim

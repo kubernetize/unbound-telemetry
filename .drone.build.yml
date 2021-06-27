@@ -1,8 +1,10 @@
 kind: pipeline
 name: build
+type: kubernetes
 
-platform:
-  os: linux
+resources:
+  requests:
+    memory: 512Mi
 
 steps:
 - name: build
@@ -17,3 +19,12 @@ steps:
       from_secret: ghcr.io.password
     mirror:
       from_secret: hub_docker_mirror
+
+  privileged: true
+  volumes:
+    - name: docker
+      path: /var/lib/docker
+
+volumes:
+  - name: docker
+    temp: {}
