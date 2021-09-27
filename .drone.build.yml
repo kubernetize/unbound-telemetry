@@ -9,6 +9,7 @@ resources:
 steps:
 - name: build
   image: plugins/docker
+  pull: always
   settings:
     repo: ghcr.io/kubernetize/unbound-telemetry
     registry: ghcr.io

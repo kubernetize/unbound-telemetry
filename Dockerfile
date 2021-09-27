@@ -1,4 +1,4 @@
-FROM rust:1-buster AS build
+FROM rust:1-bullseye AS build
 
 ARG VERSION=master
 
@@ -8,7 +8,7 @@ RUN \
     cargo build -j 1 --release && \
     strip -s target/release/unbound-telemetry
 
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 
 LABEL org.opencontainers.image.authors "Richard Kojedzinszky <richard@kojedz.in>"
 LABEL org.opencontainers.image.source https://github.com/kubernetize/unbound-telemetry
